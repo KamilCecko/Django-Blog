@@ -35,7 +35,6 @@
           </li>
         {% endif %}
         {% if user.is_authenticated %}
-
          <li class="nav-item">
           <a class="nav-link" href="{% url 'add_post' %}">Add Post</a>
         </li>
@@ -59,21 +58,10 @@
 
           </ul>
         </li>
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'edit_profile'  %}">edit_profile</a>
-        </li>
-
          <li class="nav-item">
           <a class="nav-link" href="{% url 'logout_view'  %}">Logout</a>
         </li>
 
-<!--        <form action="/ControllerName/ActionName" method="post">
-        <a href="javascript:;" onclick="parentNode.submit();"><%=n%></a>
-        <input type="hidden" name="mess" value=<%=n%>/>
-    </form>-->
-<!--https://code.djangoproject.com/ticket/15619-->
         {% else %}
 
           <li class="nav-item">

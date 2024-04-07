@@ -6,7 +6,11 @@
 {% block content %}
 
 <h1>{{post.title}}</h1>
-<small>By :{{post.author.first_name}} {{post.author.last_name}} - {{ post.post_date }} -
+<small>By :
+    {{post.author.first_name}}
+    {{post.author.last_name}} -
+    {{ post.post_date }} -
+
     {% if user.is_authenticated %}
         {% if user.id == post.author.id %}
             <a href="{% url 'update_post' post.pk %}">(Edit)</a>
@@ -23,10 +27,8 @@
 
 {{ post.body|safe }}
 
-
     <br/><br/>
     <hr>
-
 
     <br/>
     <form action="{% url 'like_post' post.pk %}"
@@ -34,9 +36,9 @@
         {% csrf_token %}
     {% if user.is_authenticated %}
         {% if liked %}
-            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-danger btm-sm">Unlike</button>
+            <button type="submit"  name="post_id"  value="{{ post.id }}"  class="btn btn-danger btm-sm">Unlike</button>
         {% else %}
-            <button type="submit", name="post_id", value="{{ post.id }}", class="btn btn-primary btm-sm">Like</button>
+            <button type="submit"  name="post_id"  value="{{ post.id }}"  class="btn btn-primary btm-sm">Like</button>
         {% endif %}
     {% else %}
          <a href="{% url 'login' %}">Login</a> to like
@@ -54,42 +56,43 @@
     <img src="{% static 'theblog/images/Profilova_fotka.png' %}" class="card-img-top" alt="...">
     {% endif %}
    <div class="card-body">
-    <h5 class="card-title">{{post.author.first_name}} {{post.author.last_name}} - {{ post.post_date }}</h5>
-      <p class="small text-muted" >
+    <h5 class="card-title">
+        {{post.author.first_name}}
+        {{post.author.last_name}} -
+        {{ post.post_date }}
+    </h5>
 
-          <a href="{% url 'show_profile_page'
-           post.author.profile.id %}">Profile Page</a>
+<p class="small text-muted" >
 
-          {% if post.author.profile.website_url %}
-          <a href="{{
-           post.author.profile.website_url }}">
-             | Website </a> |
-          {% endif %}
+  {% if post.author.profile.website_url %}
+  <a href="{% url 'show_profile_page'
+   post.author.profile.id %}">Profile Page</a>
+  {% endif %}
+  {% if post.author.profile.website_url %}
+  <a href="{{ post.author.profile.website_url }}">
+     | Website </a> |
+  {% endif %}
 
-          {% if post.author.profile.faceb_url %}
-          <a href="{{
-          post.author.profile.faceb_url }}" >
-              FB </a> |
-          {% endif %}
+  {% if post.author.profile.facebook_url %}
+  <a href="{{ post.author.profile.facebook_url }}" >
+      Facebook </a> |
+  {% endif %}
 
-          {% if post.author.profile.twitter_url %}
-          <a href="{{
-          post.author.profile.twitter_url }}">
-              Twit </a> |
-          {% endif %}
+  {% if post.author.profile.twitter_url %}
+  <a href="{{ post.author.profile.twitter_url }}">
+      Twitter </a> |
+  {% endif %}
 
-          {% if post.author.profile.Insta_url %}
-          <a href="{{
-           post.author.profile.Insta_url }}"  >
-              INSTA </a> |
-          {% endif %}
+  {% if post.author.profile.instagram_url %}
+  <a href="{{ post.author.profile.instagram_url }}"  >
+      Instagram </a> |
+  {% endif %}
 
-          {% if post.author.profile.pinterest %}
-          <a href="{{
-           post.author.profile.pinterest }}"  >
-              PINT </a> |
-          {% endif %}
-      </p>
+  {% if post.author.profile.pinterest_url %}
+  <a href="{{ post.author.profile.pinterest_url }}"  >
+      Pinterest </a> |
+  {% endif %}
+</p>
     <p class="card-text">{{post.author.profile.bio}}</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
