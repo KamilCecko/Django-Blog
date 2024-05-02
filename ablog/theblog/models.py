@@ -6,6 +6,7 @@ from ckeditor .fields import RichTextField
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    category_image = models.ImageField(null=True, blank=True, upload_to="images/category_images/")
 
     def __str__(self):
         return f"{str(self.name)}"
