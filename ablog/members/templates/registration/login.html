@@ -1,30 +1,37 @@
-
 {% extends 'base.html' %}
-{% block title %} Login {% endblock %}
+{% block title %}Login{% endblock %}
 {% block content %}
 
-<h1>Login...</h1>
-<br/><br/>
-<div class="mb-3">
-    <form method="POST">
-        {% csrf_token %}
-
-        <label class="form-label">Login</label>
-        <input class="form-control form-control-lg" type="text" placeholder="Username" aria-label=".form-control-lg example">
-        <label for="inputPassword5" class="form-label">Password</label>
-        <input type="password" id="inputPassword5" class="form-control" placeholder="Password" aria-describedby="passwordHelpBlock">
-        <div id="passwordHelpBlock" class="form-text">
-            Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+<form method="POST">
+    {% csrf_token %}
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+                <div class="col-md-8 col-lg-7 col-xl-6"></div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <form>
+                        <!-- Email input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="text" name="username" autofocus autocapitalize="none" autocomplete="username" maxlength="150" required id="id_username" class="form-control form-control-lg" />
+                            <label class="form-label" for="id_username">Username</label>
+                        </div>
+                        <!-- Password input -->
+                        <div data-mdb-input-init class="form-outline mb-4">
+                            <input type="password" name="password" autocomplete="current-password" required id="id_password" class="form-control form-control-lg" />
+                            <label class="form-label" for="id_password">Password</label>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block">Login</button>
+                        <div class="divider d-flex align-items-center my-4">
+                            Not Registered? Sign up here
+                        </div>
+                        <a data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" href="{% url 'register' %}" role="button">
+                            <i class="fab fa-facebook-f me-2"></i>Sign up here
+                        </a>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <button class="btn btn-secondary">Login</button>
-    </form>
-</div>
-
-<br/><br/>
-
-Not Registered ? Sing up here <a href="{% url 'register' %}" >Sign up</a>
-
-
+    </section>
+</form>
 
 {% endblock %}

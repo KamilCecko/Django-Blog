@@ -15,6 +15,7 @@
     {{ post.post_date }} -
 
 
+
     {% if user.is_authenticated %}
         {% if user.id == post.author.id %}
             <a href="{% url 'update_post' post.pk %}">(Edit)</a>
@@ -98,7 +99,6 @@
   {% endif %}
 </p>
     <p class="card-text">{{post.author.profile.bio}}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
@@ -107,19 +107,23 @@
 <h2>Comments.....</h2>
 <br/>
 {% if not post.comments.all %}
-    no Comments Yet  <a href="{% url 'add_comment' post.pk %}"> ADD comment </a>
+    no Comments Yet  <h5><a href="{% url 'add_comment' post.pk %}"> ADD comment </a></h5>
 {% else %}
-    <a href="{% url 'add_comment' post.pk %}"> ADD comment </a>
+    <h5><a href="{% url 'add_comment' post.pk %}"> ADD comment </a></h5>
     <br/><br/>
-    {% for comment in post.comments.all %}
+{% for comment in post.comments.all %}
+    <div class="card" style="width: 24rem;">
+        <div class="card-body">
         <strong>{{ comment.name}} -
-        {{ comment.date_added }}
+        {{ comment.date_added|date:"H:i , l, j. F Y" }}
         </strong>
         <br/>
         {{ comment.body }}
+        </div>
+    </div>
+
         <br/>
     {% endfor %}
-    <a href="{% url 'add_comment' post.pk %}"> ADD comment </a>
 {% endif %}
 
 {% endblock %}

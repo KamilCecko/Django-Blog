@@ -3,7 +3,7 @@ from django.views.generic import DetailView, CreateView
 from django.urls import reverse_lazy
 from django.contrib.auth import logout
 from django.shortcuts import redirect, get_object_or_404
-from .forms import SingUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
+from .forms import SignUpForm, EditProfileForm, PasswordChangingForm, ProfilePageForm
 from django.contrib.auth.views import PasswordChangeView
 from theblog.models import Profile
 
@@ -50,7 +50,7 @@ class PasswordsChangeView(PasswordChangeView):
 
 
 class UserRegisterView(generic.CreateView):
-    form_class = SingUpForm
+    form_class = SignUpForm
     template_name = 'registration/register.html'
     success_url = reverse_lazy('login')
 

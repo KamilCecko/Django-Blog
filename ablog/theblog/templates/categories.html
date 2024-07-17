@@ -4,7 +4,8 @@
 
 {% if category_posts %}
 
-    <h1> {{ cats }} </h1>>
+
+    <h1> {{ Category.name }} </h1>>
 
     <ul>
     {% for post in category_posts %}
@@ -12,7 +13,7 @@
             {{post.title}}</a>
             - {{post.author.first_name}}
              {{post.author.last_name}} -
-            {{ post.post_date }}
+             {{ post.post_date }}
             <small>
                 {% if user.is_authenticated %}
                - <a href="{% url 'update_post' post.pk %}">(Edit)</a>

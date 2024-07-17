@@ -19,7 +19,7 @@ class ProfilePageForm(forms.ModelForm):
         )
 
         widgets = {
-            'bio': forms.Textarea(attrs={'class': 'form-control', }),
+            'bio': forms.Textarea(attrs={'class': 'form-control', 'rows': 8}),
             'website_url': forms.TextInput(attrs={'class': 'form-control'}),
             'facebook_url': forms.TextInput(attrs={'class': 'form-control'}),
             'twitter_url': forms.TextInput(attrs={'class': 'form-control'}),
@@ -27,8 +27,7 @@ class ProfilePageForm(forms.ModelForm):
             'pinterest_url': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
-
-class SingUpForm(UserCreationForm):
+class SignUpForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
     last_name = forms.CharField(max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))
@@ -45,7 +44,7 @@ class SingUpForm(UserCreationForm):
         )
 
     def __init__(self, *args, **kwargs):
-        super(SingUpForm, self).__init__(*args, **kwargs)
+        super(SignUpForm, self).__init__(*args, **kwargs)
 
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'

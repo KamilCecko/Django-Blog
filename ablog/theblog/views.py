@@ -22,8 +22,13 @@ class HomeView(ListView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(HomeView, self).get_context_data(*args, **kwargs)
-        context["cat_menu"] = Category.objects.all()
-        context["cat"] = Category.category_image
+        cat_menu = Category.objects.all()
+        context["cat_menu"] = cat_menu
+        category_images_dict = {}
+        for category in cat_menu:
+            if category.category_image:
+                category_images_dict[category.name] = category.category_image.url
+        context["category_images"] = category_images_dict
         return context
 
 
@@ -33,8 +38,13 @@ def categorylistview(request):
 
 
 def categoryview(request, cats):
-    category_posts = Post.objects.filter(category=cats.replace('-', ' '))
-    return render(request, 'categories.html', {'cats': cats.replace('-', ' '), 'category_posts': category_posts})
+    category = Category.objects.get(name=cats)
+    category_posts = Post.objects.filter(category=category)
+    context = {
+        'category': category,
+        'category_posts': category_posts
+    }
+    return render(request, 'categories.html', context)
 
 
 class ArticleDetailView(DetailView):
@@ -88,3 +98,7 @@ class AddCommentView(CreateView):
     def form_valid(self, form):
         form.instance.post_id = self.kwargs['pk']
         return super().form_valid(form)
+
+#     post = get_object_or_404(Post, id=self.kwargs['pk'])
+
+
