@@ -1,0 +1,68 @@
+body, h1, h2, h3, h4, h5 {
+  font-family: "Raleway", sans-serif;
+  color: white; /* Default text color for the body */
+}
+
+a {
+  color: rgb(255, 111, 111); /* Default link color */
+}
+
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap between posts */
+  justify-content: center; /* Center align posts */
+}
+
+.post-container {
+  width: 110%; /* Ensure each post container takes full width */
+  max-width: 800px; /* Limit the maximum width of each post */
+}
+
+.post-card {
+  padding: 20px; /* Increased padding to increase the height of each card */
+  margin-bottom: 20px; /* Adjusted margin between cards */
+}
+
+.post-image-container {
+  width: 150px; /* Width of the image container */
+  height: 150px; /* Height of the image container */
+  overflow: hidden; /* Hide overflow for consistent image display */
+  float: left; /* Float image container to the left */
+  margin-right: 20px; /* Add margin for spacing */
+}
+
+.post-image {
+  width: 100%; /* Ensure image fills its container */
+  height: 100%; /* Ensure image fills its container */
+  object-fit: cover; /* Fit the image within the dimensions */
+}
+
+.post-content {
+  margin-top: 0; /* Adjust margin between image and content */
+}
+
+.post-content h3 a,
+.post-content h4 a,
+.post-content .read-more a {
+  color: navy; /* Specific link color for post title, category, and read more */
+}
+
+.post-content h3 a:hover,
+.post-content h4 a:hover,
+.post-content .read-more a:hover {
+  text-decoration: underline; /* Underline links on hover */
+}
+
+.post-content p {
+  margin-bottom: 10px; /* Add bottom margin to separate paragraphs */
+}
+
+.w3-row {
+  margin-top: 10px; /* Margin between read more/likes/comments and post content */
+}
+
+.w3-button {
+  cursor: pointer; /* Ensure button cursor */
+}
+
