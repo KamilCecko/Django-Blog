@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
+{% block title %} {{ category }} {% endblock %}
+
 {% block content %}
 {% if category_posts %}
-
-    <h1>{{ Category.name }}</h1>
-
+<h1>{{ category }}</h1>
     <ul>
         {% for post in category_posts %}
             <li>
