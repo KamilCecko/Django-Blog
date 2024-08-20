@@ -46,7 +46,7 @@ The project consists of two main applications:
 1. Clone this repository:
 
     ```bash
-    git clone https://github.com/KamilCecko/Django-Blog
+    git clone https://github.com/KamilCecko/Django-Blog.git
     ```
 
 2. Install the dependencies:
